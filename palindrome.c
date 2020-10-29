@@ -1,31 +1,23 @@
+
 #include <stdio.h>
-#include <string.h>
+int main() {
+    int n, reversedN = 0, remainder, originalN;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    originalN = n;
 
-void isPalindrome(char str[]) 
-{
-    // Start from leftmost and rightmost corners of str
-    int l = 0;
-    int h = strlen(str) - 1;
-    
-    printf("\n\n");
-    // Keep comparing characters while they are same
-    while (h > l)
-    {
-        if (str[l++] != str[h--])
-        {
-            printf("%s is Not Palindrome\n\n", str);
-            return;
-        }
+    // reversed integer is stored in reversedN
+    while (n != 0) {
+        remainder = n % 10;
+        reversedN = reversedN * 10 + remainder;
+        n /= 10;
     }
-    printf("%s is palindrome\n\n", str);
-}
 
-// Driver program to test above function
-int main()
-{
-    isPalindrome("madam");
-    isPalindrome("abba");
-    isPalindrome("abbccbba");
-    isPalindrome("geeks");
+    // palindrome if orignalN and reversedN are equal
+    if (originalN == reversedN)
+        printf("%d is a palindrome.", originalN);
+    else
+        printf("%d is not a palindrome.", originalN);
+
     return 0;
 }
